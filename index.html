@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SchoolOS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="welcome-screen" class="win">
+    <div class="head">
+      <span>Welcome</span>
+    </div>
+    <div class="body center">
+      <h1 style="font-size: 24px; margin-bottom: 8px;">SchoolOS</h1>
+      <p style="color: #999; font-size: 13px; margin-bottom: 20px;">Your web-based operating system.</p>
+      <button type="button" id="boot-button">Start Session</button>
+    </div>
+  </div>
+
+  <div id="desktop" class="desktop-hidden">
+    
+    <header class="topbar">
+      <span>SchoolOS</span>
+      <span id="system-clock"></span>
+    </header>
+
+    <div id="app-window-settings" class="app">
+      <div class="head" data-draggable="true">
+        <span>Settings</span>
+        <button type="button" class="window-close-btn">&times;</button>
+      </div>
+      <div class="body">
+        <p style="font-size: 13px; color: #aaa; margin-bottom: 8px;">Desktop Background</p>
+        <div class="row" style="margin-bottom: 12px;">
+          <input type="file" id="background-file-input" accept="image/*" style="font-size: 12px; color: #aaa;">
+          <button type="button" id="background-reset-button">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="app-window-files" class="app">
+      <div class="head" data-draggable="true">
+        <span>Files</span>
+        <button type="button" class="window-close-btn">&times;</button>
+      </div>
+      <div class="body flex-col">
+        <input type="file" id="file-upload-input" multiple style="font-size: 12px; color: #aaa; margin-bottom: 8px;">
+        <div class="bar">
+          <div id="storage-bar-fill"></div>
+        </div>
+        <p id="storage-status-text" style="font-size: 12px; color: #888; margin-bottom: 8px;">0 MB / 10 MB</p>
+        <div id="file-list-container" style="overflow-y: auto; flex: 1;"></div>
+      </div>
+    </div>
+
+    <div id="app-window-notes" class="app">
+      <div class="head" data-draggable="true">
+        <span>Notes</span>
+        <button type="button" class="window-close-btn">&times;</button>
+      </div>
+      <div class="body flex-col">
+        <textarea id="notes-textarea" placeholder="Jot down notes here..."></textarea>
+        <div class="row">
+          <button type="button" id="notes-save-button">Save</button>
+          <button type="button" id="notes-clear-button">Clear</button>
+          <span id="notes-status-indicator" style="font-size: 12px; color: #888; margin-left: auto;">Saved</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="app-window-terminal" class="app term-app">
+      <div class="head" data-draggable="true">
+        <span>Terminal</span>
+        <button type="button" class="window-close-btn">&times;</button>
+      </div>
+      <div class="body flex-col term">
+        <div id="terminal-output">SchoolOS v1.0. Type "help".</div>
+        <div class="row" style="margin-top: 8px; border-top: 1px solid #222; padding-top: 8px;">
+          <span style="color: #666;">&gt;</span>
+          <input type="text" id="terminal-text-input" style="background: transparent; border: none; color: #fff; outline: none; font-family: monospace; font-size: 12px; width: 100%;" autocomplete="off" spellcheck="false">
+        </div>
+      </div>
+    </div>
+
+    <div id="app-window-drawing" class="app">
+      <div class="head" data-draggable="true">
+        <span>Drawing</span>
+        <button type="button" class="window-close-btn">&times;</button>
+      </div>
+      <div class="body flex-col">
+        <div class="row tools" style="margin-bottom: 6px;">
+          <button type="button" id="tool-draw-button" class="active">Draw</button>
+          <button type="button" id="tool-erase-button">Erase</button>
+          <button type="button" id="tool-clear-button">Clear</button>
+          <button type="button" id="tool-save-button">Save</button>
+          <input type="color" id="drawing-color-picker" value="#ffffff" style="background: none; border: none; width: 24px; height: 24px; cursor: pointer;">
+          <input type="range" id="drawing-size-slider" min="1" max="30" value="4" style="width: 70px;">
+          <span id="drawing-size-label" style="font-size: 11px; color: #888;">4px</span>
+        </div>
+        <canvas id="drawing-canvas"></canvas>
+      </div>
+    </div>
+
+    <div id="app-window-info" class="app">
+      <div class="head" data-draggable="true">
+        <span>About</span>
+        <button type="button" class="window-close-btn">&times;</button>
+      </div>
+      <div class="body center">
+        <div class="icon">i</div>
+        <h2 style="font-size: 18px; margin-bottom: 4px;">SchoolOS</h2>
+        <p style="font-size: 12px; color: #888; line-height: 1.4;">A simple web-based OS simulation.</p>
+      </div>
+    </div>
+
+    <nav class="dock">
+      <button type="button" data-launch="files">📁</button>
+      <button type="button" data-launch="settings">⚙️</button>
+      <button type="button" data-launch="notes">📝</button>
+      <button type="button" data-launch="terminal">💻</button>
+      <button type="button" data-launch="drawing">🎨</button>
+      <button type="button" data-launch="info">ℹ️</button>
+    </nav>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
