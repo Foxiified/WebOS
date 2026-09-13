@@ -5,10 +5,11 @@
   font-family: system-ui, -apple-system, sans-serif;
 }
 
-body {
-  background: #191919;
-  color: #dfdfdf;
-  overflow: hidden;
+.body {
+  padding: 14px;
+  overflow: auto;
+  flex: 1;
+  background: transparent;
 }
 
 button {
@@ -49,14 +50,18 @@ button:hover {
 
 .topbar {
   height: 36px;
-  background: #161616;
-  border-bottom: 1px solid #282828;
+  background: rgba(15, 15, 15, 0.5) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 14px;
   font-size: 13px;
   color: #bbb;
+  position: relative;
+  z-index: 10;
 }
 
 .dock {
@@ -64,8 +69,10 @@ button:hover {
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  background: #1c1c1c;
-  border: 1px solid #333;
+  background: rgba(28, 28, 28, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 5px;
   border-radius: 10px;
   display: flex;
@@ -73,16 +80,19 @@ button:hover {
   z-index: 999;
   box-shadow: 0 6px 16px rgba(0,0,0,0.4);
 }
-
 .dock button {
   background: transparent;
   border: none;
   color: #ccc;
   font-size: 18px;
-  padding: 6px 10px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 6px;
+  padding: 0;
 }
-
 .dock button:hover {
   background: rgba(255,255,255,0.06);
   color: #fff;
@@ -94,8 +104,10 @@ button:hover {
   left: 80px;
   width: 460px;
   height: 360px;
-  background: #222;
-  border: 1px solid #383838;
+  background: rgba(34, 34, 34, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 6px;
   display: none;
   flex-direction: column;
@@ -103,19 +115,19 @@ button:hover {
   overflow: hidden;
   box-shadow: 0 16px 32px rgba(0,0,0,0.5);
 }
-
 .term-app {
-  background: #141414;
+  background: rgba(28, 28, 28, 0.65) !important;
 }
-
 .head {
-  background: #1b1b1b;
+  background: rgba(27, 27, 27, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   padding: 8px 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: move;
-  border-bottom: 1px solid #2e2e2e;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   user-select: none;
   font-size: 13px;
 }
@@ -201,9 +213,9 @@ button:hover {
 
 textarea {
   flex: 1;
-  background: #181818;
+  background: transparent;
   color: #ddd;
-  border: 1px solid #333;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 4px;
   padding: 10px;
   resize: none;
@@ -218,18 +230,18 @@ textarea:focus {
 }
 
 .term {
-  font-family: monospace;
-  font-size: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  color: #ffffff;
 }
-
 #terminal-output {
   flex: 1;
   overflow: auto;
   white-space: pre-wrap;
-  color: #ccc;
+  color: #ffffff;
   line-height: 1.4;
+  background: transparent;
 }
-
 .tools button {
   padding: 4px 8px;
   background: #2a2a2a;
@@ -245,8 +257,8 @@ textarea:focus {
 
 canvas {
   flex: 1;
-  background: #181818;
-  border: 1px solid #313131;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 4px;
   cursor: crosshair;
   width: 100%;
@@ -262,4 +274,8 @@ canvas {
   margin: 0 auto 12px;
   font-size: 18px;
   background: #282828;
+}
+.term-app input {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: #fff !important;
 }

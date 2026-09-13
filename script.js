@@ -228,8 +228,21 @@ document.addEventListener('DOMContentLoaded', () => {
   let drawing = false, erasing = false;
 
   function initCanvas() {
-    canvas.width = canvas.parentElement.clientWidth;
-    canvas.height = canvas.parentElement.clientHeight - 40;
+    const computedWidth = canvas.parentElement.clientWidth;
+    const computedHeight = canvas.parentElement.clientHeight - 40;
+
+    if (canvas.width === computedWidth && canvas.height === computedHeight) return;
+
+    const tempCanvas = document.createElement('canvas');
+    tempCanvas.width = canvas.width || 300;
+    tempCanvas.height = canvas.height || 150;
+    const tempCtx = tempCanvas.getContext('2d');
+    tempCtx.drawImage(canvas, 0, 0);
+
+    canvas.width = computedWidth;
+    canvas.height = computedHeight;
+
+    ctx.drawImage(tempCanvas, 0, 0, tempCanvas.width, tempCanvas.height, 0, 0, computedWidth, computedHeight);
   }
 
   canvas.addEventListener('mousedown', e => {
@@ -273,9 +286,11 @@ document.addEventListener('DOMContentLoaded', () => {
     a.click();
   });
 
-  window.addEventListener('resize', () => {
-    if (document.getElementById('app-window-drawing').style.display === 'flex') {
+  const drawingWindow = document.getElementById('app-window-drawing');
+  const resizeObserver = new ResizeObserver(() => {
+    if (drawingWindow.style.display === 'flex') {
       initCanvas();
     }
   });
+  resizeObserver.observe(drawingWindow);
 });
