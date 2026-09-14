@@ -40,7 +40,6 @@ Then start the local server:
 
 ```text
 $ python3 -m http.server
-Serving HTTP on 0.0.0.0 port 8000 ...
 ```
 
 Open `http://localhost:8000` in your browser\.
