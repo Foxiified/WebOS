@@ -27,16 +27,25 @@ The main files are:
 * script.js
 * style.css
 
-How to run it
+## How to run it
 
-Download or clone the repository, then open index.html in your browser.
+Download or clone the repository, then open the folder in your terminal:
 
-You can also use a local server:
+```text
+$ git clone https://github.com/Foxiified/WebOS.git
+$ cd WebOS
+```
 
-$python3 -m http.server
+Then start the local server:
 
-Then open http://localhost:8000 in your browser.
+```text
+$ python3 -m http.server
+Serving HTTP on 0.0.0.0 port 8000 ...
+```
 
+Open `http://localhost:8000` in your browser\.
+
+## Made by
 Made by
 
 Foxiified
