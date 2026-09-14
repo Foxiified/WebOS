@@ -33,7 +33,7 @@ Download or clone the repository, then open index.html in your browser.
 
 You can also use a local server:
 
-python3 -m http.server
+$python3 -m http.server
 
 Then open http://localhost:8000 in your browser.
 
